@@ -1,0 +1,27 @@
+# Node dependencies
+node_modules/
+dist/
+.env
+.env*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Artifacts
+.DS_Store
+Thumbs.db
+
+# IDE configuration
+.idea/
+.vscode/
+*.iml
+
+# Java / Maven build output
+server-java/target/
+target/
+*.class
+*.jar
+*.war

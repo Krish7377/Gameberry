@@ -1,0 +1,39 @@
+{
+  "name": "rivalry-arena",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:client\" \"npm:dev:java\"",
+    "dev:client": "vite --host 0.0.0.0",
+    "dev:java": "cmd /c \"cd /d server-java && mvnw.cmd spring-boot:run\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:node": "node --watch server/index.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "seed": "node server/scripts/seed.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "framer-motion": "^11.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}
