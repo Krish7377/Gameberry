@@ -16,7 +16,7 @@ import java.util.Objects;
  * - remove(K):        O(1) average
  * - containsKey(K):   O(1) average
  * 
- * Applications in Rivalry Arena:
+ * Applications in Gameberry:
  * - User active titles registry: O(1) lookup to find who conquered whom.
  * - Online room lookup: O(1) matching 4-letter room codes to active rooms.
  * - Player presence tracking: O(1) mapping user ID to socket connection.

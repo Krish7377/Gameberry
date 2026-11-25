@@ -29,7 +29,7 @@ export default function Home() {
           className="badge badge-orange"
           style={{ marginBottom: '1.2rem', fontSize: '0.9rem', padding: '0.45rem 1.4rem', fontWeight: 800 }}
         >
-          🔥 7 PURE DSA ENGINES • WARM ORANGE-RED RIVALRY • PURE LOGIC
+          🔥 7 PURE DSA ENGINES • WARM ORANGE-RED BATTLES • PURE LOGIC
         </div>
 
         <h1
@@ -84,12 +84,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1v1 Rivalry Arenas Section */}
+      {/* 1v1 Battle Arenas Section */}
       <section>
         <div style={{ marginBottom: '1.4rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
             <span className="badge badge-orange">1v1 VERSUS</span>
-            <h2 style={{ fontSize: '2rem', color: '#0f172a' }}>1v1 Rivalry Arenas</h2>
+            <h2 style={{ fontSize: '2rem', color: '#0f172a' }}>1v1 Battle Arenas</h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginTop: '0.3rem' }}>
             Turn-based strategy and head-to-head races. Play against Bots (Easy/Medium/Hard), local friends, or live online rooms.

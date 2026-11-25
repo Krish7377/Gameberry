@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
  * - removeLast():    O(1)
  * - remove(node):    O(1) given direct reference
  * 
- * Applications in Rivalry Arena:
+ * Applications in Gameberry:
  * 1. Match history / Rivalry Timeline: O(1) prepend for recent matches and O(1) append.
  * 2. Snake game body representation: O(1) add new head, O(1) remove tail when moving.
  */

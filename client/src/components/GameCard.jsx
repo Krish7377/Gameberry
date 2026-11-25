@@ -23,7 +23,7 @@ export default function GameCard({ game }) {
         },
       });
     } else {
-      // 1v1 rivalry arena
+      // 1v1 versus arena
       navigate('/lobby', { state: { selectedGame: game.id } });
     }
   };
@@ -68,7 +68,7 @@ export default function GameCard({ game }) {
               fontSize: '0.78rem',
             }}
           >
-            {isSolo ? '🧩 SOLO PUZZLE' : '⚔️ 1v1 RIVALRY'}
+            {isSolo ? '🧩 SOLO PUZZLE' : '⚔️ 1v1 VERSUS'}
           </span>
         </div>
         <h3 style={{ marginBottom: '0.4rem', color: '#0f172a', fontSize: '1.25rem', fontWeight: 800 }}>

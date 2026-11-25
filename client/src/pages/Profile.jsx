@@ -28,6 +28,7 @@ export default function Profile() {
   const [matchHistory, setMatchHistory] = useState([]);
   const [personalBests, setPersonalBests] = useState({});
   const [loading, setLoading] = useState(true);
+  const [profileErrors, setProfileErrors] = useState({ titles: false, matches: false });
 
   // Auth form state for optional registration/login
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -36,34 +37,39 @@ export default function Profile() {
   const [authPassword, setAuthPassword] = useState('');
   const [authError, setAuthError] = useState('');
 
-  const loadData = async () => {
-    const localRivalries = getActiveRivalries();
-    const localMatches = getMatchHistory();
-    const localBests = getPersonalBests();
-    setPersonalBests(localBests);
+  useEffect(() => {
+    if (!user) {
+      setLoading(true);
+      return;
+    }
 
-    if (!user?._id) {
-      setTitles(localRivalries);
-      setMatchHistory(localMatches);
+    setPersonalBests(getPersonalBests());
+
+    // Local records are device-bound; only this device's guest may read them.
+    if (user.isGuest || !user._id) {
+      setTitles(getActiveRivalries());
+      setMatchHistory(getMatchHistory());
+      setProfileErrors({ titles: false, matches: false });
       setLoading(false);
       return;
     }
 
-    try {
-      const [titleRes, matchRes] = await Promise.allSettled([
-        api.get(`/titles/${user._id}`),
-        api.get(`/matches?userId=${user._id}`),
-      ]);
+    let active = true;
+    setLoading(true);
+    Promise.allSettled([
+      api.get(`/titles/${user._id}`),
+      api.get(`/matches?userId=${user._id}`),
+    ]).then(([titleRes, matchRes]) => {
+      if (!active) return;
+      const titlesFailed = titleRes.status === 'rejected';
+      const matchesFailed = matchRes.status === 'rejected';
+      setProfileErrors({ titles: titlesFailed, matches: matchesFailed });
+      setTitles(titlesFailed ? [] : titleRes.value?.titles || []);
 
-      if (titleRes.status === 'fulfilled' && titleRes.value?.titles?.length) {
-        setTitles(titleRes.value.titles);
+      if (matchesFailed) {
+        setMatchHistory([]);
       } else {
-        setTitles(localRivalries);
-      }
-
-      if (matchRes.status === 'fulfilled' && matchRes.value?.matches?.length) {
-        // Merge server and local matches, removing duplicates by id
-        const serverList = matchRes.value.matches.map((m) => ({
+        const serverList = (matchRes.value?.matches || []).map((m) => ({
           id: m._id || m.id,
           gameName: m.games?.[0] || '1v1 Arena',
           opponentName: m.players?.find((p) => p.id !== user._id)?.username || 'Opponent',
@@ -73,28 +79,18 @@ export default function Profile() {
           score: Array.isArray(m.finalScore) ? `${m.finalScore[0]} - ${m.finalScore[1]}` : '1 - 0',
           playedAt: new Date(m.createdAt || Date.now()).getTime(),
         }));
-
-        const combined = [...serverList];
-        for (const lm of localMatches) {
-          if (!combined.some((cm) => cm.id === lm.id)) {
-            combined.push(lm);
-          }
-        }
-        combined.sort((a, b) => (b.playedAt || 0) - (a.playedAt || 0));
-        setMatchHistory(combined);
-      } else {
-        setMatchHistory(localMatches);
+        serverList.sort((a, b) => (b.playedAt || 0) - (a.playedAt || 0));
+        setMatchHistory(serverList);
       }
-    } catch (e) {
-      setTitles(localRivalries);
-      setMatchHistory(localMatches);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadData();
+    }).catch(() => {
+      if (!active) return;
+      setProfileErrors({ titles: true, matches: true });
+      setTitles([]);
+      setMatchHistory([]);
+    }).finally(() => {
+      if (active) setLoading(false);
+    });
+    return () => { active = false; };
   }, [user]);
 
   const handleClearHistory = () => {
@@ -125,7 +121,7 @@ export default function Profile() {
   const winRate = total > 0 ? Math.round((winCount / total) * 100) : 0;
 
   return (
-    <div style={{ maxWidth: 900, margin: '1rem auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{ maxWidth: 900, margin: '1rem auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Profile Header */}
       <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
@@ -264,9 +260,13 @@ export default function Profile() {
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🛡️</div>
-            <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>No active 7-day titles yet</div>
+            <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>
+              {loading ? 'Loading titles…' : profileErrors.titles ? 'Titles could not be loaded' : 'No active 7-day titles yet'}
+            </div>
             <div style={{ fontSize: '0.85rem', marginTop: '0.3rem', color: 'var(--text-muted)' }}>
-              Challenge a friend in the Lobby with <strong>"Title Stake ON"</strong> to win and hold bragging rights for 7 days!
+              {profileErrors.titles
+                ? 'Please try again when the server is available.'
+                : <>Challenge a friend in the Lobby with <strong>"Title Stake ON"</strong> to win and hold bragging rights for 7 days!</>}
             </div>
           </div>
         ) : (
@@ -311,9 +311,13 @@ export default function Profile() {
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🎮</div>
-            <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>No matches played yet</div>
+            <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>
+              {loading ? 'Loading match history…' : profileErrors.matches ? 'Match history could not be loaded' : 'No matches played yet'}
+            </div>
             <div style={{ fontSize: '0.85rem', marginTop: '0.3rem', color: 'var(--text-muted)' }}>
-              Play any Solo logic game or 1v1 battle to build your match history!
+              {profileErrors.matches
+                ? 'Please try again when the server is available.'
+                : 'Play any Solo logic game or 1v1 battle to build your match history!'}
             </div>
           </div>
         ) : (

@@ -15,7 +15,7 @@
     <artifactId>rivalry-arena-server</artifactId>
     <version>1.0.0</version>
     <name>rivalry-arena-server</name>
-    <description>Rivalry Arena Java Spring Boot Backend with custom DSA engines</description>
+    <description>Gameberry Java Spring Boot Backend with custom DSA engines</description>
 
     <properties>
         <java.version>17</java.version>

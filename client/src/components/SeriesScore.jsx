@@ -91,7 +91,7 @@ export default function SeriesScore({ series, p1Name = 'Player 1', p2Name = 'Opp
             fontSize: '0.85rem',
           }}
         >
-          {series.titleMode ? '🏆 TITLE STAKE' : '⚔️ RIVALRY'} •{' '}
+          {series.titleMode ? '🏆 TITLE STAKE' : '⚔️ VERSUS'} •{' '}
           {series.format === 1
             ? 'Single Match (1 Round)'
             : `Best of ${series.format}${series.format === 2 ? ' (Sudden Death)' : ''}`}

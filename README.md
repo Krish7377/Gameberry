@@ -1,4 +1,4 @@
-# ⚔️ Rivalry Arena
+# ⚔️ Gameberry
 
 > **A competitive gaming arena designed to make Data Structures and Algorithms (DSA) visible, interactive, and academically demonstrable.**
 
@@ -15,8 +15,9 @@ npm run dev
 ```
 
 - **Client:** `http://localhost:5173`
-- **Server:** `http://localhost:3001` (with automatic in-memory fallback if MongoDB is not running)
-- **Run Tests:** `npm test` (52/52 passing)
+- **Server:** `http://localhost:3001` (Java Spring Boot 3; automatic in-memory fallback if MongoDB is not running)
+- **Prerequisites:** Node 20+, JDK 17+, Maven on `PATH`
+- **Run Tests:** `npm test` (57/57 passing)
 
 ---
 
@@ -72,7 +73,7 @@ npm run dev
 ## 🎓 Professor Viva & Demo Walkthrough (5-Minute Script)
 
 1. **Start Muted:** Point out that audio starts muted by default for clean presentation.
-2. **Showcase `client/src/dsa/structures.js`:** Walk through the custom implementations of `Stack`, `Queue`, `DoublyLinkedList`, `HashMap`, and `PriorityQueue`. Show the 52/52 passing unit tests (`npm test`).
+2. **Showcase `client/src/dsa/structures.js`:** Walk through the custom implementations of `Stack`, `Queue`, `DoublyLinkedList`, `HashMap`, and `PriorityQueue`. Show the 57/57 passing unit tests (`npm test`).
 3. **Play Tic-Tac-Toe & Open DSA Inspector:** Show moves pushing onto the undo stack and popping onto the redo stack. Point out the $O(1)$ guarantees.
 4. **Play Minesweeper:** Click the board to trigger the BFS Queue ripple cascade; show peak queue size in the Inspector.
 5. **Play Snake Arena:** Show the Doubly Linked List length and $O(1)$ HashMap collision tracking in the Inspector.

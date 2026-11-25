@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Rivalry Arena - Full Stack (Java Spring Boot + React Vite)
+TITLE Gameberry - Full Stack (Java Spring Boot + React Vite)
 CD /D "%~dp0"
 
 IF "%JAVA_HOME%" == "" (
@@ -9,7 +9,7 @@ IF "%JAVA_HOME%" == "" (
 )
 
 ECHO =========================================================================
-ECHO   ⚔️  STARTING RIVALRY ARENA (JAVA SPRING BOOT 3 + REACT VITE)  ⚔️
+ECHO   ⚔️  STARTING GAMEBERRY (JAVA SPRING BOOT 3 + REACT VITE)  ⚔️
 ECHO =========================================================================
 ECHO   Java Backend  : http://localhost:3001
 ECHO   React Client  : http://localhost:5173

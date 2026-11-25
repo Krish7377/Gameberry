@@ -1,4 +1,4 @@
-# Rivalry Arena — Full Project Plan & Roadmap
+# Gameberry — Full Project Plan & Roadmap
 
 A competitive web gaming arena designed to showcase core Data Structures and Algorithms (DSA) through pure JavaScript game engines, a Best-of-N series state machine, title rivalry mechanics ("Crushed" / "Crushed by"), and a real-time DSA Inspector.
 
@@ -38,7 +38,7 @@ A competitive web gaming arena designed to showcase core Data Structures and Alg
 
 Every data structure has an explicit academic purpose, visible in the in-game **DSA Inspector**:
 
-| Structure / Algo | Implementation in Rivalry Arena | DSA Inspector Metrics |
+| Structure / Algo | Implementation in Gameberry | DSA Inspector Metrics |
 |---|---|---|
 | **Doubly Linked List** | Snake body (O(1) head add, tail pop); match history feed & rivalry timeline | Node count, head/tail coordinates, traversal pointers |
 | **Stack** | Tic-Tac-Toe undo/redo stacks; 2048 snapshot undo (max 3); Connect Four 7 column stacks | Stack depth, peek element, capacity |

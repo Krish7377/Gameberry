@@ -1,12 +1,12 @@
 {
-  "name": "rivalry-arena",
+  "name": "gameberry",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "concurrently -k \"npm:dev:client\" \"npm:dev:java\"",
     "dev:client": "vite --host 0.0.0.0",
-    "dev:java": "cmd /c \"cd /d server-java && mvnw.cmd spring-boot:run\"",
+    "dev:java": "cmd /c \"cd /d server-java && mvn spring-boot:run\"",
     "dev:server": "node --watch server/index.js",
     "dev:node": "node --watch server/index.js",
     "build": "vite build",

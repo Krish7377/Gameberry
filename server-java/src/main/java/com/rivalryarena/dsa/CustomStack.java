@@ -12,7 +12,7 @@ import java.util.EmptyStackException;
  * - pop():       O(1)
  * - peek():      O(1)
  * 
- * Applications in Rivalry Arena:
+ * Applications in Gameberry:
  * - Connect Four: 7 column stacks holding dropped player discs.
  * - Tic-Tac-Toe & 2048: Move history stack for tracking game steps.
  */

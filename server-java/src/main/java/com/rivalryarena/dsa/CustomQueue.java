@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  * - dequeue():     O(1)
  * - peek():        O(1)
  * 
- * Applications in Rivalry Arena:
+ * Applications in Gameberry:
  * - Series Machine: Queues upcoming games in a multi-round match.
  * - Minesweeper & Snake Bot: BFS flood fill frontier queue.
  */

@@ -425,7 +425,7 @@ export default function Lobby() {
   return (
     <div style={{ maxWidth: 860, margin: '1rem auto', display: 'flex', flexDirection: 'column', gap: '1.8rem' }}>
       <div>
-        <h2 style={{ fontSize: '2.4rem', color: '#0f172a' }}>1v1 Rivalry Battle Lobby</h2>
+        <h2 style={{ fontSize: '2.4rem', color: '#0f172a' }}>1v1 Battle Lobby</h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '0.2rem' }}>
           Configure your opponent, series format, and battle pool. Solo puzzles (2048 & Sudoku) are available in Solo Mode.
         </p>
@@ -694,7 +694,7 @@ export default function Lobby() {
       <div className="card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.2rem' }}>
           <div>
-            <h3 style={{ color: '#ea580c' }}>3. 1v1 Rivalry Games Pool</h3>
+            <h3 style={{ color: '#ea580c' }}>3. 1v1 Battle Games Pool</h3>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
               Selected games will be played in turn-based order or multi-round series.
             </span>

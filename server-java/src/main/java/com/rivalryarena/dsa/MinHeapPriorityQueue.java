@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
  * - peek():           O(1)
  * - getSortedList():  O(N log N)
  * 
- * Applications in Rivalry Arena:
+ * Applications in Gameberry:
  * - Speed Board Leaderboards: Keeps the top 10 fastest times per game and board variant.
  *   Inserting a new speed score takes logarithmic time O(log 10) <= 4 comparisons,
  *   vastly outperforming an O(N) array scan.

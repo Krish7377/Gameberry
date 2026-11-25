@@ -79,7 +79,7 @@ async function startServer() {
   });
 
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`[server] Rivalry Arena server running on port ${PORT}`);
+    console.log(`[server] Gameberry server running on port ${PORT}`);
   });
 }
 

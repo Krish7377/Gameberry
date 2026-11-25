@@ -1,5 +1,6 @@
 package com.rivalryarena.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
@@ -10,8 +11,10 @@ public class User {
     @Id
     private String id;
     private String username;
+    @JsonIgnore
     private String passwordHash;
     private boolean isGuest;
+    @JsonIgnore
     private String deviceToken;
     private int wins = 0;
     private int losses = 0;

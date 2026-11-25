@@ -45,7 +45,7 @@ export default function Nav() {
               letterSpacing: '0.04em',
             }}
           >
-            RIVALRY ARENA
+            GAMEBERRY
           </span>
         </Link>
 

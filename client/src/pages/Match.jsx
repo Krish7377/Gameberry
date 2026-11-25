@@ -71,7 +71,7 @@ export default function Match() {
   // Dynamic Browser Tab Title
   useEffect(() => {
     const game = getGame(currentGameId);
-    document.title = `Play ${game.name} — Rivalry Arena`;
+    document.title = `Play ${game.name} — Gameberry`;
   }, [currentGameId]);
   const [engineInstance, setEngineInstance] = useState(() => getGame(initialGameId).engine);
   const [engineState, setEngineState] = useState(() => {
